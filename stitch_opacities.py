@@ -13,7 +13,9 @@ plt.rcParams['font.monospace'] = 'DejaVu Sans Mono'
 # begin with X = 0.7, Z=0.02
 
 opacity_folder = './opacities/'
+# from https://www.wichita.edu/academics/fairmount_college_of_liberal_arts_and_sciences/physics/Research/opacity.php
 low_T_opacity_path = opacity_folder+'A09photo.7.02.tron'
+# from https://opalopacity.llnl.gov/
 high_T_opacity_path = opacity_folder+'OPAL_GN93.7.02.txt'
 
 # these opacity tables aren't that large, so we don't lose time loading them using pandas
@@ -43,6 +45,7 @@ print('saved opacities to  '+opacity_folder+'combined_OPAL_F05_X0.7_Z0.02_logT8.
 
 # recreate figure
 log_T = rosseland.index
+log_R = rosseland.columns
 
 cmap = plt.cm.magma
 
