@@ -55,7 +55,7 @@ def energy_gen(rho,T):
     return e_pp+e_cno
 
 if __name__ == '__main__':
-
+    # this reproduces figure 18.8 in KWW, showing the contribution from each nuclear process to the total energy generation
     x = np.linspace(6, 8, 50)
     y = np.log10(energy.energy_gen(1,10**x))
     y_pp = np.log10(energy.epsilon_pp(1,10**x))
