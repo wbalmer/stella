@@ -7,15 +7,11 @@ def del_rad(m, l, P, rho, T):
     Calculate del_rad based on 4.30 in HKT
     """
     try:
-        kappa = interpolate.interp_k(rho, T)#[0]
+        kappa = interpolate.interp_k(rho, T)
     except ValueError:
-        print('T',np.log10(T))
-        print('rho',np.log10(rho))
-        print('m',m/c.Ms)
-        print('l',l/c.Ls)
         print(np.log10(rho/(T/1e6)**3), np.log10(T))
         raise ValueError('trying to interpolate out of bounds')
-    return (3/(16*np.pi*c.a*c.c*c.G))*P*kappa*l/(m*T**4)
+    return (3/(16*np.pi*c.a*c.c))*(P*kappa/T**4)*(l/(c.G*m))
 
 del_ad = 0.4 # assuming ideal gas, complete ionization
 
