@@ -2,4 +2,4 @@
 __pycache__
 test_stella_jax.ipynb
 jax_calcs.py
-*.npy
+converged_interior_*
