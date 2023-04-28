@@ -57,6 +57,6 @@ plt.colorbar(sm, ax=plt.gca(), label=r'log(R)')
 plt.suptitle('Roseland Mean Opacities for GN93hz mixture + F05 mixture \n(X=0.7, Y=0.28, Z=0.02)', fontsize=16)
 plt.xlabel('Temperature (log K)')
 plt.ylabel(r'log($\kappa_{rad}$) [cm$^{2}$/g$^{-1}$]')
-plt.savefig('extended_opacity.png', dpi=300, bbox_inches='tight')
+plt.savefig('./figures/extended_opacity.png', dpi=300, bbox_inches='tight')
 
 print('saved figure to extended_opacity.png')

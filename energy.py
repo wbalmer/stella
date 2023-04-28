@@ -82,4 +82,4 @@ if __name__ == '__main__':
     plt.xlabel(r'$\log_{10}(T/K)$')
     plt.ylabel(r'$\log_{10}(\epsilon_H)$')
 
-    plt.savefig('energy_generation.png', dpi=300, bbox_inches='tight')
+    plt.savefig('./figures/energy_generation.png', dpi=300, bbox_inches='tight')

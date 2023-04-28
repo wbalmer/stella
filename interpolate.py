@@ -2,8 +2,8 @@ import numpy as np
 import pandas as pd
 from scipy.interpolate import griddata
 
-# rosseland = pd.read_csv('./opacities/combined_OPAL_F05_X0.7_Z0.02_logT8.7-2.7.txt', index_col=0)
-rosseland = pd.read_csv('./opacities/OPAL_GN93.7.02.txt', index_col=0)
+rosseland = pd.read_csv('./opacities/combined_OPAL_F05_X0.7_Z0.02_logT8.7-2.7.txt', index_col=0)
+# rosseland = pd.read_csv('./opacities/OPAL_GN93.7.02.txt', index_col=0)
 # make the columns floats not strings (useful later)
 rosseland.columns = rosseland.columns.astype(float)
 
