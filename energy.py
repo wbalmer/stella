@@ -68,18 +68,27 @@ def energy_gen(rho,T, psi=1):
     return e_pp+e_cno
 
 if __name__ == '__main__':
+    # plotting
+    import matplotlib.pyplot as plt
+    import seaborn as sb
+    sb.set_context("talk")
+    plt.style.use('dark_background')
+    # plt.style.use('default')
+    plt.rcParams['font.family'] = 'monospace'   # Fonts
+    plt.rcParams['font.monospace'] = 'DejaVu Sans Mono'
     # this reproduces figure 18.8 in KWW, showing the contribution from each nuclear process to the total energy generation
     x = np.linspace(6, 8, 50)
-    y = np.log10(energy.energy_gen(1,10**x))
-    y_pp = np.log10(energy.epsilon_pp(1,10**x))
-    y_cno = np.log10(energy.epsilon_cno(1,10**x))
+    y = np.log10(energy_gen(1,10**x))
+    y_pp = np.log10(epsilon_pp(1,10**x))
+    y_cno = np.log10(epsilon_cno(1,10**x))
 
-    plt.plot(x,y, color='k')
-    plt.plot(x,y_pp, ls='--', color='k')
-    plt.plot(x,y_cno, ls='--', color='k')
+    plt.plot(x,y, color='w')
+    plt.plot(x,y_pp, ls='--', color='tomato', label='pp-chain')
+    plt.plot(x,y_cno, ls='--', color='cornflowerblue', label='CNO-cycle')
     plt.ylim(-10,10)
 
     plt.xlabel(r'$\log_{10}(T/K)$')
     plt.ylabel(r'$\log_{10}(\epsilon_H)$')
+    plt.legend()
 
-    plt.savefig('./figures/energy_generation.png', dpi=300, bbox_inches='tight')
+    plt.savefig('./figures/energy_generation_alt.png', dpi=300, bbox_inches='tight', transparent=True)
