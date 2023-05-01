@@ -14,6 +14,6 @@ For a $M=1.67~M_\odot$ star, stella gives
 <p style="text-align: center;">The run of a StellaLuna model for a $M=1.33~M_\odot$ star over radius in the style of Figure 9.1 from HKT 2nd ed.</p>
 
 
-![A comparison between del rad and del ad over the lagrangian mass coordinate for a M=1.33 Msun star.](./figures/run_over_mass_1.33.png)
+![A comparison between del rad and del ad over the lagrangian mass coordinate for a M=1.33 Msun star.](./figures/del_over_mass_1.33.png)
 
 <p style="text-align: center;">A comparison between $\nabla_{rad}$ and $\nabla_{ad}$ over the lagrangian mass coordinate for a $M=1.33~M_\odot$ star.</p>
