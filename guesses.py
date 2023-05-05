@@ -81,6 +81,6 @@ def load_outer(M_star, L_star, R_star, factor=0.9999, X=0.7):
         rho = np.nan
     # calculate surface opacity and pressure
     kappa = interpolate.interp_k(rho,Teff)
-    P = 2*surface_g/(3*kappa)
+    P = 2*surface_g/(3*kappa) * (1 + (kappa*L_star/(4*np.pi*c.c*c.G*M_star)))
     # return guess array
     return np.array([L_star, P, R_star, Teff])

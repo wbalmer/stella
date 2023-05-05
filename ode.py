@@ -24,7 +24,7 @@ def ode(m,v):
     del_actual = np.minimum(del_radiative, energy.del_ad)
 
     # calculate the derivatives
-    dldm = energy.energy_gen(rho,T, psi=1) #change in luminosity with enclosed mass
+    dldm = energy.energy_gen(rho,T) #change in luminosity with enclosed mass
     dPdm = -c.G*m/(4*np.pi*r**4) # change in pressure with enclosed mass
     drdm = 1/(4*np.pi*r**2 * rho) # mass conservation eq.
     dTdm = ((-c.G*m*T)/(4*np.pi*P*r**4))*del_actual # change in temperature with enclosed mass

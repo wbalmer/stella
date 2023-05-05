@@ -42,7 +42,7 @@ def shooter(vec, M_star=1.67*c.Ms, M_fit=0.5,
 
     # set up array of enclosed mass to solve across
     exiting = np.logspace(np.log10(in_factor*c.Ms), np.log10(M_fit*M_star), base = 10.0, num = int(n))
-    entering = np.flipud(np.logspace(np.log10(M_fit*M_star), np.log10(M_star), base = 10.0 , num = n))
+    entering = np.append(np.flipud(np.linspace(M_star*out_factor, M_star, num = int(n/2))), np.flipud(np.linspace(M_fit*M_star, M_star*out_factor, num = int(n/2)))[1:])
 
     # set up multithreading
     if multithread:
@@ -118,7 +118,7 @@ def solver(vec_final, M_star=1.67*c.Ms, M_fit=0.5,
     outt = load_outer(M_star, L_star, R_star, factor=out_factor)
 
     exiting = np.logspace(np.log10(in_factor*c.Ms), np.log10(M_fit*M_star), base = 10.0, num = int(n))
-    entering = np.flipud(np.linspace(M_fit*M_star, M_star, num = int(n)))
+    entering = np.append(np.flipud(np.linspace(M_star*out_factor, M_star, num = int(n/2))), np.flipud(np.linspace(M_fit*M_star, M_star*out_factor, num = int(n/2)))[1:])
 
     if multithread:
         ray.init(num_cpus=4)

@@ -8,7 +8,7 @@ Written by William Balmer, April 2023, for AS.171.611.01 "Stellar Structure and 
 
 ## A converged model example
 
-For a $M=1.33~M_\odot$ star, stella gives
+For a $M=1.33~M_\odot$ star, StellaLuna takes 18 evaluations to achieve sum-squared differences between shootf results <1e-6. StellaLuna gives
 
 <p style="text-align: center;">The run of a StellaLuna model for a $M=1.33~M_\odot$ star over the lagrangian mass coordinate.</p>
 
