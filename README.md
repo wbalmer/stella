@@ -8,7 +8,7 @@ Written by William Balmer, April 2023, for AS.171.611.01 "Stellar Structure and 
 
 ## A converged model example
 
-For a $M=1.33~M_\odot$ star, StellaLuna takes 18 evaluations to achieve sum-squared differences between shootf results <1e-6. StellaLuna gives
+For a $M=1.33~M_\odot$ star, StellaLuna takes 18 evaluations to achieve sum-squared differences between shootf results <1e-6. StellaLuna gives a radius of $R=1.45~R_\odot$, a central temperature of $T_c = 1.68\times10^7 K$, a central pressure of $P_c = 1.89\times10^{17} Pa$, and a total luminosity of $L_{\star}=2.71~L_\odot$. 
 
 <p style="text-align: center;">The run of a StellaLuna model for a $M=1.33~M_\odot$ star over the lagrangian mass coordinate.</p>
 
@@ -31,6 +31,6 @@ For a $M=1.33~M_\odot$ star, StellaLuna takes 18 evaluations to achieve sum-squa
 
 ![The mean opacities used in StellaLuna calculations](./figures/extended_opacity_alt.png)
 
-:star2: StellaLuna implements energy generation from a combination of the pp-chain and CNO cycle using using the polynomial fits from Angulo+99 recorded in KWW 2nd ed. \S18.5.
+:star2: StellaLuna implements energy generation from a combination of the pp-chain and CNO cycle using using the polynomial fits from Angulo+99 recorded in KWW 2nd ed. Ch 18.5.
 
 ![Reproduction of Figure 18.8 in KWW 2nd ed. of the energy generation from pp-chain and CNO-cycle.](./figures/energy_generation_alt.png)
