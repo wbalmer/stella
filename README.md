@@ -8,7 +8,7 @@ Written by William Balmer, April 2023, for AS.171.611.01 "Stellar Structure and 
 
 ## A converged model example
 
-For a $M=1.33~M_\odot$ star, StellaLuna takes 18 evaluations to achieve sum-squared differences between shootf results <1e-6. StellaLuna gives a radius of $R=1.45~R_\odot$, a central temperature of $T_c = 1.68\times10^7 K$, a central pressure of $P_c = 1.89\times10^{17} Pa$, and a total luminosity of $L_{\star}=2.71~L_\odot$. 
+For a $M=1.33\~M_\odot$ star, StellaLuna takes 18 evaluations to achieve sum-squared differences between shootf results <1e-6. StellaLuna gives a radius of $R_\star=1.45\~R_\odot$ (within 5.8\% of MESA), a central temperature of $T_c = 1.68\times10^7 K$ (within 6.1\% of MESA), a central pressure of $P_c = 1.89\times10^{17}\~Pa$, and a total luminosity of $L_{\star}=2.71\~L_\odot$ (within 1.1\% of MESA). 
 
 <p style="text-align: center;">The run of a StellaLuna model for a $M=1.33~M_\odot$ star over the lagrangian mass coordinate.</p>
 
