@@ -12,8 +12,8 @@ from scipy.constants import N_A
 # plotting
 import matplotlib.pyplot as plt
 import seaborn as sb
-plt.style.use('dark_background')
-# plt.style.use('default')
+# plt.style.use('dark_background')
+plt.style.use('default')
 sb.set_context("talk")
 plt.rcParams['font.family'] = 'monospace'   # Fonts
 plt.rcParams['font.monospace'] = 'DejaVu Sans Mono'
@@ -25,8 +25,8 @@ if not os.path.isdir(plot_dir):
 
 # guesses
 # surface
-M_star = 3*c.Ms
-L_star_starting = (M_star/c.Ms)**(4)*c.Ls # eq. 1.88 HKT
+M_star = 1.33*c.Ms
+L_star_starting = (M_star/c.Ms)**(3.5)*c.Ls # eq. 1.88 HKT
 R_star_starting = (M_star/c.Ms)**(0.75)*c.Rs # eq. 1.87 HKT
 # core
 Pc_starting = (3/(8*np.pi))*(c.G*(M_star)**2)/(R_star_starting)**4 # constant density sphere, lower limit!
@@ -51,7 +51,7 @@ plt.legend(fontsize=13, bbox_to_anchor=(0.55,0.5))
 plt.xlim(-0.1,1.1)
 plt.minorticks_on()
 
-plt.savefig(plot_dir+'run_over_mass_alt_{}.png'.format(M_star/c.Ms), dpi=300, bbox_inches='tight', transparent=True)
+plt.savefig(plot_dir+'run_over_mass_norm_{}.png'.format(M_star/c.Ms), dpi=300, bbox_inches='tight', transparent=True)
 
 # second plot
 # reproduce figure 9.1 in HKT but in mass space
@@ -69,7 +69,7 @@ plt.legend(fontsize=10)
 plt.ylim(1,1e10)
 plt.xlim(0,1.1)
 
-plt.savefig(plot_dir+'run_over_radius_HKT9-1_alt_{}.png'.format(M_star/c.Ms), dpi=300, bbox_inches='tight', transparent=True)
+plt.savefig(plot_dir+'run_over_radius_HKT9-1_norm_{}.png'.format(M_star/c.Ms), dpi=300, bbox_inches='tight', transparent=True)
 
 
 # third plot
@@ -86,7 +86,7 @@ plt.legend()
 plt.ylim(0,0.6)
 plt.xlim(-0.1,1.1)
 plt.minorticks_on()
-plt.savefig(plot_dir+'del_over_mass_alt_{}.png'.format(M_star/c.Ms), dpi=300, bbox_inches='tight', transparent=True)
+plt.savefig(plot_dir+'del_over_mass_norm_{}.png'.format(M_star/c.Ms), dpi=300, bbox_inches='tight', transparent=True)
 
 
 # fourth plot
@@ -140,4 +140,4 @@ plt.yscale('log')
 plt.xlabel('Polytropic Index n')
 plt.ylabel(r'$\rho_c~/~\left|\rho\right|}$')
 
-plt.savefig(plot_dir+'central_concentration_polytropes_alt_{}.png'.format(M_star/c.Ms), dpi=300, bbox_inches='tight', transparent=True)
+plt.savefig(plot_dir+'central_concentration_polytropes_norm_{}.png'.format(M_star/c.Ms), dpi=300, bbox_inches='tight', transparent=True)

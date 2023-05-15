@@ -26,8 +26,8 @@ if not os.path.isdir(plot_dir):
 
 # guesses
 # surface
-M_star = 3*c.Ms
-lpower = 4
+M_star = 1.33*c.Ms
+lpower = 3.5
 L_star_starting = (M_star/c.Ms)**(lpower)*c.Ls # eq. 1.88 HKT
 rpower = 0.75
 R_star_starting = (M_star/c.Ms)**(rpower)*c.Rs # eq. 1.87 HKT
@@ -87,11 +87,11 @@ stella_lstar = L_star/c.Ls
 print('StellaLuna gives:')
 print(stella_lstar, stella_pc, stella_rstar, stella_tc)
 
-# mesa for 3 Msun
+# mesa for 1.33 Msun
 # mesa log Tc
-mesa_tc = 7.377617
+mesa_tc = 7.200495
 # mesa log Dc
-mesa_rho = 10**1.60052
+mesa_rho = 10**1.819171
 def pressure(rho,T, X=0.7):
     '''
     Calculate pressure assuming an EOS that is a simple mixture
@@ -102,9 +102,9 @@ def pressure(rho,T, X=0.7):
     return (rho*c.k*N_A*T/mu) + (c.a/3*(T**4))
 mesa_pc = np.log10(pressure(mesa_rho, 10**mesa_tc))
 # mesa log R
-mesa_rstar = (10**(0.310050))#*c.Rs
+mesa_rstar = (10**(0.135255))#*c.Rs
 # mesa log L
-mesa_lstar = (10**(1.926952))#*c.Ls
+mesa_lstar = (10**(0.428695))#*c.Ls
 
 print('MESA gives:')
 print(mesa_lstar, mesa_pc, mesa_rstar, mesa_tc)
