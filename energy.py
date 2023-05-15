@@ -49,6 +49,10 @@ def g141(T):
 
 
 def poor_mans_psi(T):
+    '''
+    A piecewise approximation of the pp-chain He dependency, fit by eye from
+    figure 18.7 in KWW
+    '''
     T7 = T / 1e7
     if T7 < 1.:
         p = 1.
@@ -60,6 +64,9 @@ def poor_mans_psi(T):
 
 
 def epsilon_pp(rho,T):
+    '''
+    energy generation for the pp-chain, from KWW Ch 18.4
+    '''
     T9 = T/1e9
     X1 = 0.7 # assuming at the beginning based on our opacities
     f_weak = f11(rho,T)
@@ -74,6 +81,9 @@ def epsilon_pp(rho,T):
 
 
 def epsilon_cno(rho,T,Z=0.02):
+    '''
+    energy generation rate for the CNO cycle, from KWW Ch 18.4
+    '''
     T9 = T/1e9
     X1 = 0.7 # assuming at the beginning based on our opacities
     X_cno = (2/3)*Z

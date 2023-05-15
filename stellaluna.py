@@ -23,22 +23,26 @@ from shootf import shooter, solver
 # guesses
 # surface
 M_star = 1.33*c.Ms
-L_star = (M_star/c.Ms)**(3.5)*c.Ls # eq. 1.88 HKT
-R_star = (M_star/c.Ms)**(0.75)*c.Rs # eq. 1.87 HKT
+L_star_starting = ((M_star/c.Ms)**(3.5))*c.Ls # eq. 1.88 HKT
+R_star_starting = ((M_star/c.Ms)**(0.75))*c.Rs # eq. 1.87 HKT
 # core
-Pc = (3/(8*np.pi))*(c.G*(M_star)**2)/(R_star)**4 # constant density sphere, lower limit!
-Tc = (1/2)*((4/(3+5*0.7))/(N_A*c.k))*(c.G*M_star)/(R_star) # constant density sphere
-P_factor = 1e1 # guess to inflate constant density sphere pressure
-Pc *= P_factor
+Pc_starting = (3/(8*np.pi))*(c.G*(M_star)**2)/(R_star_starting)**4 # constant density sphere, lower limit!
+Tc_starting = (1/2)*((4/(3+5*0.7))/(N_A*c.k))*(c.G*M_star)/(R_star_starting) # constant density sphere
+
+print('Starting Guess:')
+print('L/Lsun', L_star_starting/c.Ls)
+print('logPc', np.log10(Pc_starting))
+print('R/Rsun', R_star_starting/c.Rs)
+print('logTc', np.log10(Tc_starting))
 
 # initial guess vector
-vec = np.array([L_star, Pc, R_star, Tc])
+vec = np.array([L_star_starting, Pc_starting, R_star_starting, Tc_starting])
 # shootf args
 # Star mass, Shooting point in fraction of Mass, number of saved points, interior starting point, exterior starting point, do multiprocessing?
-args = (M_star, 0.33, int(1e5), 1e-12, 0.9999, True)
+args = (M_star, 0.25, int(1e5), 1e-12, 0.9999, True)
 # set limits for the minimizer
-bounds = ([L_star*1e-1,Pc/P_factor,R_star*1e-1,Tc],
-          [L_star*1e1, Pc/P_factor*1e4, R_star*1e1, Tc*1e3])
+bounds = (np.array([1e-1*c.Ls, Pc_starting, 1e-1*c.Rs, Tc_starting]),
+          np.array([1e6*c.Ls, Pc_starting*1e3, 1e3*c.Rs, Tc_starting*1e2]))
 
 # run least_squares minimizer to converge model
 # this is effectively the "newton" solver here
@@ -59,15 +63,22 @@ if np.sum(final.active_mask**2) != 0:
 # run solution and create densely sampled results table
 solution = solver(final.x, M_star=args[0], M_fit=args[1], n=1e6, in_factor=args[3], out_factor=args[4], multithread=args[5])
 
-# what is an appropriate P_factor to speed up convergence?
-print('ratio between constant density Pc and converged solution',solution[2].max()/(Pc/P_factor))
-
-print('ratio between constant density Tc and converged solution',solution[4].max()/Tc)
-
 L_star, Pc, R_star, Tc = final.x
+print('Converged starting values:')
+print('L/Lsun', L_star/c.Ls)
+print('logPc', np.log10(Pc))
+print('R/Rsun', R_star/c.Rs)
+print('logTc', np.log10(Tc))
 
-print('Radius is ',solution[3].max()/((M_star/c.Ms)**(0.75)*c.Rs), 'of homology guess')
-print('Luminosity is ',solution[1].max()/((M_star/c.Ms)**(3.5)*c.Ls), 'of homology guess')
+np.savetxt('converged_start_{}.txt'.format(M_star/c.Ms), final.x)
+
+# what is an appropriate P_factor to speed up convergence?
+print('ratio between constant density Pc and converged solution',Pc/Pc_starting)
+
+print('ratio between constant density Tc and converged solution',Tc/Tc_starting)
+
+print('Radius is ',R_star/R_star_starting, 'of homology guess')
+print('Luminosity is ',L_star/L_star_starting, 'of homology guess')
 
 # central density vs avg density
 converged_concentration = solution[5].max()/(4*np.pi*M_star/(3*R_star**3))

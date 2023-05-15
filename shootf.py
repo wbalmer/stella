@@ -133,11 +133,16 @@ def solver(vec_final, M_star=1.67*c.Ms, M_fit=0.5,
     exiting_sol = sol_i.y
     entering_sol = sol_s.y
 
+#  machine-readable table with Lagrangian mass coordinate m, radius r, den-
+# sity ρ, temperature T , pressure P , luminosity l, nuclear energy generation
+# rate , opacity κ, adiabatic temperature gradient ∇ad, actual temperature
+# gradient ∇ = d ln T /d ln P , and the convective/radiative nature of the shell;
+
     # combine mass arrays
     mass = np.concatenate([exiting, np.flipud(entering)], axis=0)
 
     # add mass to final array
-    solution = np.zeros((7, mass.shape[0]))
+    solution = np.zeros((10, mass.shape[0]))
     solution[0] = mass
 
     # combine solution arrays
@@ -148,8 +153,19 @@ def solver(vec_final, M_star=1.67*c.Ms, M_fit=0.5,
     rho = density.density(solution[2],solution[4], X=0.7)
     solution[5] = rho
 
-    # add del_rad as 7th column
+    # add energy generation rate
+    epsilon = energy.energy_gen(rho,solution[4])
+    solution[6] = epsilon
+
+    kappa = interpolate.interp_k(rho,solution[4])
+    solution[7] = kappa
+
+    # add del ad
+    del_ad = np.zeros_like(epsilon) + energy.del_ad
+    solution[8] = del_ad
+
+    # add del_rad
     del_rad = energy.del_rad(mass, solution[1], solution[2], rho, solution[4])
-    solution[6] = del_rad
+    solution[9] = del_rad
 
     return solution

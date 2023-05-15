@@ -66,8 +66,8 @@ def load_outer(M_star, L_star, R_star, factor=0.9999, X=0.7):
     def min_rho(rho):
         kappa = interpolate.interp_k(rho,Teff)
         # eq. 4.48 in HKT
-        opacity_pressure = (2/3) * (surface_g / kappa) * (1 + (kappa*L_star/(4*np.pi*c.c*c.G*M_star)))
-        gas_rad_pressure = (1/3)*c.a*Teff**4 + rho * N_A*c.k*Teff/mu
+        opacity_pressure = (2/3) * (surface_g / kappa) #* (1 + (kappa*L_star/(4*np.pi*c.c*c.G*M_star)))
+        gas_rad_pressure = (1/3)*c.a*Teff**4 + (rho * N_A*c.k*Teff/mu)
         diff = 1 - opacity_pressure/gas_rad_pressure
         return np.abs(diff**2)
     # minimize this difference
@@ -81,6 +81,6 @@ def load_outer(M_star, L_star, R_star, factor=0.9999, X=0.7):
         rho = np.nan
     # calculate surface opacity and pressure
     kappa = interpolate.interp_k(rho,Teff)
-    P = 2*surface_g/(3*kappa) * (1 + (kappa*L_star/(4*np.pi*c.c*c.G*M_star)))
+    P = 2*surface_g/(3*kappa) #* (1 + (kappa*L_star/(4*np.pi*c.c*c.G*M_star)))
     # return guess array
     return np.array([L_star, P, R_star, Teff])

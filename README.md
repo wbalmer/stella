@@ -8,21 +8,21 @@ Written by William Balmer, April 2023, for AS.171.611.01 "Stellar Structure and 
 
 ## A converged model example
 
-For a $M=1.33\~M_\odot$ star, StellaLuna takes 18 evaluations to achieve sum-squared differences between shootf results <1e-6. StellaLuna gives a radius of $R_\star=1.45\~R_\odot$ (within 5.8\% of MESA), a central temperature of $T_c = 1.68\times10^7 K$ (within 6.1\% of MESA), a central pressure of $P_c = 1.89\times10^{17}\~Pa$, and a total luminosity of $L_{\star}=2.71\~L_\odot$ (within 1.1\% of MESA). 
+For a $M=3.0\~M_\odot$ star, gives a radius of $R_\star=2.17\~R_\odot$ (within 6.7\% of MESA), a central temperature of $\log{T_c [K]}=7.37$ (within 0.15\% of MESA), a central pressure of $\log{P_c [dyne/cm^2]} = 17.03$ (within 0.45\% of MESA), and a total luminosity of $L_{\star}=81\~L_\odot$ (within 4.16\% of MESA).
 
-<p style="text-align: center;">The run of a StellaLuna model for a $M=1.33~M_\odot$ star over the lagrangian mass coordinate.</p>
+<p style="text-align: center;">The run of a StellaLuna model for a $M=3.0~M_\odot$ star over the lagrangian mass coordinate.</p>
 
-![The run of a StellaLuna model for a M=1.33 Msun star over the lagrangian mass coordinate.](./figures/run_over_mass_alt_1.33.png)
+![The run of a StellaLuna model for a M=3.0 Msun star over the lagrangian mass coordinate.](./figures/run_over_mass_alt_3.0.png)
 
-<p style="text-align: center;">The run of a StellaLuna model for a $M=1.33~M_\odot$ star over radius in the style of Figure 9.1 from HKT 2nd ed.</p>
+<p style="text-align: center;">The run of a StellaLuna model for a $M=3.0~M_\odot$ star over radius in the style of Figure 9.1 from HKT 2nd ed.</p>
 
-![The run of a StellaLuna model for a M=1.33 Msun star over radius in the style of Figure 9.1 from HKT 2nd ed.](./figures/run_over_radius_HKT9-1_alt_1.33.png)
-
-
-<p style="text-align: center;">A comparison between $\nabla_{rad}$ and $\nabla_{ad}$ over the lagrangian mass coordinate for a $M=1.33~M_\odot$ star.</p>
+![The run of a StellaLuna model for a M=3.0 Msun star over radius in the style of Figure 9.1 from HKT 2nd ed.](./figures/run_over_radius_HKT9-1_alt_3.0.png)
 
 
-![A comparison between del rad and del ad over the lagrangian mass coordinate for a M=1.33 Msun star.](./figures/del_over_mass_alt_1.33.png)
+<p style="text-align: center;">A comparison between $\nabla_{rad}$ and $\nabla_{ad}$ over the lagrangian mass coordinate for a $M=3.0~M_\odot$ star.</p>
+
+
+![A comparison between del rad and del ad over the lagrangian mass coordinate for a M=3.0 Msun star.](./figures/del_over_mass_alt_3.0.png)
 
 
 ## Extras
